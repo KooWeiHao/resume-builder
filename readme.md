@@ -1,6 +1,9 @@
 # Resume Builder
 > _Just a random project to learn [React] and [Spring Boot]_
 
+## Features Done
+- sign up, login
+
 ## Tech Stack
 ### -> Front end / Client side
 ![alt text](https://reactjs.org/logo-180x180.png)
