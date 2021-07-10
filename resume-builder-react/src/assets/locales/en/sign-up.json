@@ -1,0 +1,42 @@
+{
+  "sign":{
+    "up": {
+      "page": {
+        "title": "Sign Up"
+      },
+      "form": {
+        "title": "Sign Up",
+        "username": {
+          "title": "Username",
+          "placeholder": "username"
+        },
+        "password": {
+          "title": "Password",
+          "placeholder": "password"
+        },
+        "button": {
+          "login": "Login",
+          "sign": {
+            "up": "Sign Up"
+          }
+        },
+        "error": {
+          "required": "This field is required!",
+          "password": {
+            "minimum": {
+              "length": "Password must be 7 characters at minimum!"
+            }
+          },
+          "duplicate": {
+            "username": "Username already exists!"
+          }
+        }
+      },
+      "message": {
+        "account": {
+          "created": "{{username}} has been successfully created."
+        }
+      }
+    }
+  }
+}

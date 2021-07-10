@@ -1,0 +1,15 @@
+.btn-primary{
+  background-color: $mariner;
+  border-color: $mariner;
+}
+
+.btn-primary:hover, .btn-primary.focus,.btn-primary:focus, .btn-primary:active, .btn-primary.active,
+.btn-primary.disabled, .btn-primary:disabled, .open>.dropdown-toggle.btn-primary, .show > .dropdown-toggle.btn-primary {
+  background-color: $tory-blue;
+  border-color: $tory-blue;
+}
+
+.dropdown-item.active, .dropdown-item:active, .dropdown-item.focus, .dropdown-item:focus{
+  color: $white;
+  background-color: $danube;
+}

@@ -1,0 +1,32 @@
+$mariner: #4267B2;
+$tory-blue: #35528E;
+$danube: #6885C1;
+
+$amaranth: #dc3545;
+
+$aluminium: #8A8D91;
+$bright-grey: #585A5D;
+
+$white: #ffffff;
+
+.mariner-background{
+  background-color: $mariner;
+}
+
+.mariner-fill{
+  fill: $mariner;
+}
+
+.white-text{
+  color: $white;
+}
+
+.aluminium-link{
+  color: $aluminium;
+}
+
+.aluminium-link:hover{
+  color: $bright-grey;
+}
+
+

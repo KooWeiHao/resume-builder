@@ -1,0 +1,30 @@
+{
+  "login": {
+    "page": {
+      "title": "Login"
+    },
+    "form": {
+      "title": "Login",
+      "username": {
+        "title": "Username",
+        "placeholder": "username"
+      },
+      "password": {
+        "title": "Password",
+        "placeholder": "password"
+      },
+      "button": {
+        "login": "Login",
+        "sign": {
+          "up": "Sign Up"
+        }
+      },
+      "error": {
+        "required": "This field is required!",
+        "invalid": {
+          "credentials": "Invalid username or password!"
+        }
+      }
+    }
+  }
+}
