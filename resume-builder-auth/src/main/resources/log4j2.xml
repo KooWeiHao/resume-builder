@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout disableAnsi="false" pattern="%d{yyyyMMdd HHmmss} [%t] %highlight{%-5level} %C{6} (%F:%L) - %m%n{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=black, DEBUG=green bold, TRACE=blue}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.jdbcdslog.StatementLogger" additivity="false" level="trace">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="liquibase.executor" additivity="false" level="trace">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="resume.builder" additivity="false" level="trace">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Root level="warn">
+			<AppenderRef ref="console" />
+		</Root>
+	</Loggers>
+</Configuration>
