@@ -4,10 +4,10 @@ import HeaderComponent from "../components/share/header.component";
 import FooterComponent from "../components/share/footer.component";
 import LoginRoute from "../components/login/login.route";
 import SignUpRoute from "../components/sign-up/sign-up.route";
-import HomeRoute from "../components/home/home.route";
 import PageNotFoundRoute from "../components/page-not-found/page-not-found.route";
 import {Component} from "react";
 import {clearMessage} from "../store/actions/message.action";
+import ResumeRoute from "../components/resume/resume.route";
 
 class Routes extends Component{
     componentDidMount() {
@@ -27,11 +27,11 @@ class Routes extends Component{
         return (
             <Switch>
                 <Route exact path='/'>
-                    <Redirect to="/home" />
+                    <Redirect to="/resume" />
                 </Route>
                 <Route path="/login" component={LoginRoute} />
                 <Route path="/sign-up" component={SignUpRoute} />
-                <AuthenticatedRoute path="/home" component={HomeRoute} isAuthenticated={isAuthenticated}/>
+                <AuthenticatedRoute path="/resume" component={ResumeRoute} isAuthenticated={isAuthenticated}/>
 
                 <Route path="/page-not-found" component={PageNotFoundRoute} />
                 <Redirect to="/page-not-found" />

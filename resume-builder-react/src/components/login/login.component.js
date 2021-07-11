@@ -37,7 +37,7 @@ class LoginComponent extends Component{
         const {username, password} = values;
 
         login(username, password).then(() =>{
-            history.push('/home');
+            history.push('/resume');
         }).catch(()=>{
             setSubmitting(false);
         });

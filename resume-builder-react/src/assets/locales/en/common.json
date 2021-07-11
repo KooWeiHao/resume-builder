@@ -1,7 +1,11 @@
 {
   "app": {
     "title": "Resume Builder",
-    "trademark": "©2021 Copyright: Eric Koo Wei Hao"
+    "trademark": "©2021 Copyright: Eric Koo Wei Hao",
+    "language": {
+      "en": "EN",
+      "cn": "中"
+    }
   },
   "button": {
     "logout": "Log Out"

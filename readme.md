@@ -24,7 +24,7 @@
 | CSS framework | bootstrap(4.6.0), react-bootstrap(1.6.0) |
 | Routing | react-router-dom(5.2.0) |
 | Http client | axios(0.21.1) |
-| Internationalization | i18next(20.3.1), i18next-http-backend(1.2.6), react-i18next(11.10.0) |
+| Internationalization | i18next(20.3.1), i18next-http-backend(1.2.6), react-i18next(11.10.0), i18next-browser-languagedetector(6.1.2) |
 | Form library | formik(2.2.9), yup(0.32.9) |
 
 ### Back end / Server Side

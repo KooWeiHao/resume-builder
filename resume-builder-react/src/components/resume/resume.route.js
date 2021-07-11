@@ -1,22 +1,22 @@
 import {Route, Switch} from "react-router-dom";
-import HomeComponent from "./home.component";
 import {Helmet} from "react-helmet";
 import {withTranslation} from "react-i18next";
+import ResumeComponent from "./resume.component";
 
-function HomeRoute(props){
+function ResumeRoute(props){
     const {t} = props;
 
     return (
         <>
             <Helmet>
-                <title>{t("home.page.title")}</title>
+                <title>{t("resume.page.title.home")}</title>
             </Helmet>
 
             <Switch>
-                <Route exact path="/home" component={HomeComponent} />
+                <Route exact path="/resume" component={ResumeComponent} />
             </Switch>
         </>
     );
 }
 
-export default withTranslation()(HomeRoute);
+export default withTranslation()(ResumeRoute);

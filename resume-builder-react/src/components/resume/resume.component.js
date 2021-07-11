@@ -1,6 +1,6 @@
 import {withTranslation} from "react-i18next";
 
-function HomeComponent(props){
+function ResumeComponent(props){
     const {t} = props;
 
     return (
@@ -10,4 +10,4 @@ function HomeComponent(props){
     );
 }
 
-export default withTranslation()(HomeComponent);
+export default withTranslation()(ResumeComponent);
