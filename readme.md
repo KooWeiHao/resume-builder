@@ -1,11 +1,20 @@
 # Resume Builder
 > _Just a random project to learn [React] and [Spring Boot]_
 
+| Module | Description |
+| ------ | ------ |
+| resume-builder-api | store entities and services, with no implementation / business logic |
+| resume-builder-auth | Oauth authorization server using embedded keycloak server |
+| resume-builder-core | for system configuration, implementation, business logic |
+| resume-builder-react | front-end application / client side |
+| resume-builder-rest | as the 'start' of backend application / server side |
+| resume-builder-util | store customized and shared util packages for server side |
+
 ## Features Done
 - sign up, login
 
 ## Tech Stack
-### -> Front end / Client side
+### Front end / Client side
 ![alt text](https://reactjs.org/logo-180x180.png)
 
 | Category | Package |
@@ -18,7 +27,7 @@
 | Internationalization | i18next(20.3.1), i18next-http-backend(1.2.6), react-i18next(11.10.0) |
 | Form library | formik(2.2.9), yup(0.32.9) |
 
-### -> Back end / Server Side
+### Back end / Server Side
 ![alt text](https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg)
 
 | Subject | Description |
@@ -32,6 +41,6 @@ It does not matter how slowly you go, as long as you do not stop. - Confucius
 ```
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-   
-   [React]: <https://reactjs.org/>
-   [Spring Boot]: <https://spring.io/projects/spring-boot>
+
+[React]: <https://reactjs.org/>
+[Spring Boot]: <https://spring.io/projects/spring-boot>
