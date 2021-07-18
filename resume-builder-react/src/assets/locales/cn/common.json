@@ -1,5 +1,7 @@
 {
-  "button": {
-    "logout": "登出"
+  "app": {
+    "button": {
+      "logout": "登出"
+    }
   }
 }

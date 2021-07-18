@@ -1,22 +1,14 @@
 import {Route, Switch} from "react-router-dom";
-import {Helmet} from "react-helmet";
-import {withTranslation} from "react-i18next";
 import ResumeComponent from "./resume.component";
+import ResumeAddComponent from "./resume-add.component";
 
-function ResumeRoute(props){
-    const {t} = props;
-
+function ResumeRoute(){
     return (
-        <>
-            <Helmet>
-                <title>{t("resume.page.title.home")}</title>
-            </Helmet>
-
-            <Switch>
-                <Route exact path="/resume" component={ResumeComponent} />
-            </Switch>
-        </>
+        <Switch>
+            <Route exact path="/resume" component={ResumeComponent} />
+            <Route exact path="/resume/add" component={ResumeAddComponent} />
+        </Switch>
     );
 }
 
-export default withTranslation()(ResumeRoute);
+export default ResumeRoute;

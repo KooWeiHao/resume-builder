@@ -37,7 +37,7 @@ function HeaderComponent(props){
 
                             <Dropdown.Menu align="right">
                                 <Dropdown.Item onClick={logout}>
-                                    <FontAwesomeIcon icon="sign-out-alt"/> {t("button.logout")}
+                                    <FontAwesomeIcon icon="sign-out-alt"/> {t("app.button.logout")}
                                 </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

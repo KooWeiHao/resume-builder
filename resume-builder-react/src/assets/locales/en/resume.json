@@ -2,7 +2,15 @@
   "resume": {
     "page": {
       "title": {
-        "home": "Home"
+        "home": "Home",
+        "add": "Add"
+      },
+      "home": {
+        "search": {
+          "form": {
+            "title": "Resume - Search"
+          }
+        }
       }
     }
   }

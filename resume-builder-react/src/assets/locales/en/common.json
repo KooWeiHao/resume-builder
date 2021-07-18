@@ -5,10 +5,11 @@
     "language": {
       "en": "EN",
       "cn": "中"
+    },
+    "button": {
+      "logout": "Log Out",
+      "add": "Add"
     }
-  },
-  "button": {
-    "logout": "Log Out"
   },
   "page": {
     "not": {
