@@ -2,6 +2,7 @@ import {withTranslation} from "react-i18next";
 import {Helmet} from "react-helmet";
 import "./resume.scss";
 import {Component} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class ResumeAddComponent extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class ResumeAddComponent extends Component {
         this.state = {
             form:{
                 options:{
-                    menuItems: ['about.me', 'education', 'languages', 'experience', 'skills', 'websites.social.links', 'references']
+                    menuItems: {'about.me': 'user-tie', 'education': 'university', 'languages': 'globe', 'experience': 'history', 'skills': 'tools', 'websites.social.links': 'link', 'references': 'user-tag'}
                 },
                 ui:{
                     selectedMenuItem: "about.me"
@@ -39,8 +40,10 @@ class ResumeAddComponent extends Component {
                     <div className="row">
                         <div className="col-3">
                             <nav className="nav flex-column menu">
-                                {form.options.menuItems.map(menuItem =>
-                                    <a key={menuItem} className={form.ui.selectedMenuItem === menuItem ? 'nav-link menu-item selected' : 'nav-link menu-item'} href={`#${menuItem}`} onClick={() => this.onSelectMenuItem(menuItem)}>{t(`resume.page.add.menu.item.${menuItem}.title`)}</a>
+                                {Object.keys(form.options.menuItems).map(title =>
+                                    <a key={title} className={form.ui.selectedMenuItem === title ? 'nav-link menu-item selected' : 'nav-link menu-item'} href={`#${title}`} onClick={() => this.onSelectMenuItem(title)}>
+                                        <span className="pr-2"><FontAwesomeIcon icon={form.options.menuItems[title]}/></span> {t(`resume.page.add.menu.item.${title}.title`)}
+                                    </a>
                                 )}
                             </nav>
                         </div>
