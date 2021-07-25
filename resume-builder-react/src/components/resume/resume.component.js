@@ -12,7 +12,7 @@ function ResumeComponent(props){
                 <title>{t("resume.page.title.home")}</title>
             </Helmet>
 
-            <div className="container-fluid">
+            <div className="container-fluid pt-4">
                 <div className="row">
                     <div className="col-12">
                         <div className="card">

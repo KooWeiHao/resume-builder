@@ -11,6 +11,37 @@
             "title": "Resume - Search"
           }
         }
+      },
+      "add": {
+        "menu": {
+          "item": {
+            "about.me": {
+              "title": "About Me"
+            },
+            "education": {
+              "title": "Education"
+            },
+            "languages": {
+              "title": "Languages"
+            },
+            "experience": {
+              "title": "Experience"
+            },
+            "skills": {
+              "title": "Skills"
+            },
+            "websites": {
+              "social": {
+                "links": {
+                  "title": "Website & Social Links"
+                }
+              }
+            },
+            "references": {
+              "title": "References"
+            }
+          }
+        }
       }
     }
   }

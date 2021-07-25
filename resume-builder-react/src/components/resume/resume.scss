@@ -1,0 +1,36 @@
+@import "src/assets/styles/colors";
+
+.menu{
+  background-color: $white;
+  border: 1px solid $gainsboro;
+  border-radius: 6px;
+  list-style: none;
+  margin-bottom: 16px;
+}
+
+.menu-item{
+  border-bottom: 1px solid $gainsboro;
+  color: black;
+}
+
+.menu-item:hover {
+  color: inherit;
+  background-color: $aliceblue;
+}
+
+.menu-item.selected{
+  border-left: 3px solid $mariner;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.menu-item:first-child{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.menu-item:last-child{
+  border-bottom: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
