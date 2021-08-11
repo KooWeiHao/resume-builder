@@ -17,3 +17,11 @@
 .dropdown-toggle-hide-icon::after{
   display: none !important;
 }
+
+.display-unset{
+  display: unset;
+}
+
+.pointer-events-none{
+  pointer-events: none;
+}

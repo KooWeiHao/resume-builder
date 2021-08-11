@@ -12,7 +12,7 @@
           }
         }
       },
-      "add": {
+      "modify": {
         "menu": {
           "item": {
             "about.me": {
@@ -39,6 +39,72 @@
             },
             "references": {
               "title": "References"
+            }
+          }
+        },
+        "form": {
+          "profile": {
+            "picture": {
+              "title": "Profile Picture",
+              "placeholder": "Drop an image here, or click to select image"
+            }
+          },
+          "name": {
+            "title": "Name",
+            "placeholder": "name"
+          },
+          "title": {
+            "title": "Title",
+            "placeholder": "title"
+          },
+          "email": {
+            "title": "Email",
+            "placeholder": "email"
+          },
+          "nationality": {
+            "title": "Nationality",
+            "placeholder": "nationality"
+          },
+          "mobile": {
+            "number": {
+              "title": "Mobile Number",
+              "placeholder": "mobile number"
+            }
+          },
+          "date": {
+            "of": {
+              "birth": {
+                "title": "Date of Birth",
+                "placeholder": "date of birth"
+              }
+            }
+          },
+          "career": {
+            "objective": {
+              "title": "Career Objective",
+              "placeholder": "career objective"
+            }
+          },
+          "error": {
+            "required": "This field is required!",
+            "invalid": {
+              "email": "Invalid email format!",
+              "image": "Only JPG & PNG files are allowed!"
+            }
+          },
+          "button": {
+            "save": "Save",
+            "cancel": "Cancel",
+            "confirm": "Confirm"
+          },
+          "alert": {
+            "save": {
+              "title": "Save changes?",
+              "message": "Please check information carefully before submitting."
+            },
+            "cancel": {
+              "title": "Quit editing?",
+              "message": "Changes will not be saved."
             }
           }
         }

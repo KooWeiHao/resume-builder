@@ -22,7 +22,7 @@ function ResumeComponent(props){
                                         <span className="white-text font-weight-bold">{t("resume.page.home.search.form.title")}</span>
                                     </div>
                                     <div className="col-2">
-                                        <Link to={`${match.url}/add`}>
+                                        <Link to={`${match.url}/add/about-me`}>
                                             <button className="btn btn-sm btn-light float-right"><FontAwesomeIcon icon="plus" className="mariner-text"/> {t("app.button.add")}</button>
                                         </Link>
                                     </div>

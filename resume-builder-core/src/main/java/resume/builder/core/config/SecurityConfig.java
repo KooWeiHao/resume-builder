@@ -1,4 +1,4 @@
-package resume.builder.core.security;
+package resume.builder.core.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +40,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //Enabling Cross Origin Requests for a RESTful Web Service
     @Bean
-    public FilterRegistrationBean simpleCorsFilter() {
+    public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
         // *** URL below needs to match the client URL and port ***
         logger.info("Whitelisted origins - {}", allowedOrigin);
 
@@ -51,7 +51,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         config.setAllowedMethods(Arrays.asList("POST","PUT","GET","OPTIONS","DELETE"));
         config.setAllowedHeaders(Arrays.asList("X-Requested-With", "accept", "authorization","content-type"));
         source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
+        FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
     }
