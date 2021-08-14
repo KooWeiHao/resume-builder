@@ -7,6 +7,8 @@ import {Modal} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {connect} from "react-redux";
 import {addOrUpdateResumeAboutMe} from "../../../store/actions/resume.action";
+import moment from "moment";
+import {endOfYesterday} from "date-fns";
 
 class AboutMe extends Component{
     constructor(props) {
@@ -42,7 +44,7 @@ class AboutMe extends Component{
             .required(this.props.t("resume.page.modify.form.error.required")),
 
         email: Yup.string()
-            .email(this.props.t("resume.page.modify.form.error.invalid.email"))
+            .email(this.props.t("resume.page.modify.form.error.invalid.email.format"))
             .required(this.props.t("resume.page.modify.form.error.required")),
 
         mobileNumber: Yup.number()
@@ -96,12 +98,19 @@ class AboutMe extends Component{
 
     onDrop = (acceptedFiles, fileRejections)=>{
         if(fileRejections.length > 0){
+            const error = fileRejections[0].errors[0].code;
+            if(error === "file-too-large"){
+                this.setFormState("ui", {"profilePictureError": "resume.page.modify.form.error.invalid.image.size"});
+            }
+            if(error === "file-invalid-type"){
+                this.setFormState("ui", {"profilePictureError": "resume.page.modify.form.error.invalid.image.type"});
+            }
+
             const profilePictureData = {
                 profilePicture : null,
                 profilePictureSource: ""
             };
             this.setFormState("data", profilePictureData);
-            this.setFormState("ui", {"profilePictureError": "resume.page.modify.form.error.invalid.image"});
             this.formAboutMe.current.setFieldValue("profilePicture", null);
         }
         else{
@@ -153,7 +162,7 @@ class AboutMe extends Component{
                                     <div className="row">
                                         <div className="col-9"/>
                                         <div className="col-3 form-group required">
-                                            <Dropzone onDrop={this.onDrop} onFileDialogCancel={this.onValidateProfilePicture} accept={['image/jpeg', 'image/png']} maxFiles={1} multiple={false}>
+                                            <Dropzone onDrop={this.onDrop} onFileDialogCancel={this.onValidateProfilePicture} accept={['image/jpeg', 'image/png']} maxFiles={1} maxSize={2*1024*1024} multiple={false}>
                                                 {({getRootProps, getInputProps}) => (
                                                     <section className="container">
                                                         <label className="form-control-label" htmlFor="profilePicture">{t("resume.page.modify.form.profile.picture.title")}</label>
@@ -198,7 +207,7 @@ class AboutMe extends Component{
                                     <div className="row">
                                         <div className="col-6 form-group required">
                                             <label className="form-control-label" htmlFor="dateOfBirth">{t("resume.page.modify.form.date.of.birth.title")}</label>
-                                            <Field type="date" className={`form-control ${touched.dateOfBirth && errors.dateOfBirth ? "is-invalid" : ""}`} id="dateOfBirth" name="dateOfBirth" placeholder={t("resume.page.modify.form.date.of.birth.placeholder")} />
+                                            <Field type="date" className={`form-control ${touched.dateOfBirth && errors.dateOfBirth ? "is-invalid" : ""}`} id="dateOfBirth" name="dateOfBirth" placeholder={t("resume.page.modify.form.date.of.birth.placeholder")} max={moment(endOfYesterday()).format("YYYY-MM-DD")}/>
                                             <ErrorMessage component="div" name="dateOfBirth" className="invalid-feedback font-italic"/>
                                         </div>
                                         <div className="col-6 form-group required">

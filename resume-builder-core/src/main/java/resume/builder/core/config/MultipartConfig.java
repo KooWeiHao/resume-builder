@@ -8,7 +8,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @Configuration
 class MultipartConfig {
     @Value("${spring.multipart.file.max.upload.size.in.mb}")
-    private Long maxUploadSize;
+    private long maxUploadSize;
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver()

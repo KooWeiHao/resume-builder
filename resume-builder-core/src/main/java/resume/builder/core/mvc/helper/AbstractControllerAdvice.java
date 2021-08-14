@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
-import java.util.Collections;
-import java.util.Map;
-
 @ControllerAdvice
 class AbstractControllerAdvice {
     private static final Logger logger = LoggerFactory.getLogger(AbstractControllerAdvice.class);
@@ -23,8 +20,8 @@ class AbstractControllerAdvice {
     }
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
-    ResponseEntity<Map<String, String>> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException exception){
+    ResponseEntity<String> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException exception){
         logger.error(exception.getMessage());
-        return ResponseEntity.badRequest().body(Collections.singletonMap("error", "max.upload.size.exceeded"));
+        return ResponseEntity.badRequest().body("max.upload.size.exceeded");
     }
 }

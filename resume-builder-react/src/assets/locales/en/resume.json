@@ -88,8 +88,13 @@
           "error": {
             "required": "This field is required!",
             "invalid": {
-              "email": "Invalid email format!",
-              "image": "Only JPG & PNG files are allowed!"
+              "email": {
+                "format": "Invalid email format!"
+              },
+              "image": {
+                "type": "Only JPG & PNG files are allowed!",
+                "size": "Maximum upload file size of 2MB is exceeded!"
+              }
             }
           },
           "button": {

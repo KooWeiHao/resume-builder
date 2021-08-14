@@ -7,13 +7,16 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class ResumeAboutMeForm{
+public class ResumeAboutMeForm implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @NotNull
     private MultipartFile profilePicture;
 
