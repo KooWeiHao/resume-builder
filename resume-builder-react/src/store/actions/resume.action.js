@@ -12,7 +12,7 @@ export const addOrUpdateResumeAboutMe = (profilePicture, name, title, email, mob
             return Promise.resolve(response.data['resume']);
         })
         .catch(error =>{
-            const message = (error.response && error.response.data && error.response.data['error']) || error.message || error.toString();
+            const message = (error.response && error.response.data && error.response.data['message']) || error.message || error.toString();
 
             return Promise.reject(message);
         })

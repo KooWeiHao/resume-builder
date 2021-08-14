@@ -102,7 +102,7 @@ class LoginComponent extends Component{
                                 </Formik>
                             </div>
 
-                            <div className="card-footer text-sm-right">
+                            <div className="card-footer text-right">
                                 <Link to="/sign-up" className="aluminium-link">{t("login.form.button.sign.up")}</Link>
                             </div>
                         </div>

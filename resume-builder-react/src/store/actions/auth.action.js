@@ -16,7 +16,7 @@ export const signUp = (username, password) =>(dispatch) =>{
             return Promise.resolve();
         })
         .catch(error =>{
-            const message = (error.response && error.response.data && error.response.data['error']) || error.message || error.toString();
+            const message = (error.response && error.response.data && error.response.data['message']) || error.message || error.toString();
 
             dispatch({
                 type: SIGN_UP_FAIL
@@ -46,7 +46,7 @@ export const login = (username, password) =>(dispatch) =>{
             return Promise.resolve();
         })
         .catch(error =>{
-            const message = (error.response && error.response.data && error.response.data['error']) || error.message || error.toString();
+            const message = (error.response && error.response.data && error.response.data['message']) || error.message || error.toString();
 
             dispatch({
                 type: LOGIN_FAIL

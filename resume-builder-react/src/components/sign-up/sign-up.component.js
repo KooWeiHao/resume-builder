@@ -137,7 +137,7 @@ class SignUpComponent extends Component{
                             </div>
 
                             {!form.ui.successful && (
-                                <div className="card-footer text-sm-right">
+                                <div className="card-footer text-right">
                                     <Link to="/login" className="aluminium-link">{t("sign.up.form.button.login")}</Link>
                                 </div>
                             )}

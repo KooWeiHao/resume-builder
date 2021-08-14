@@ -3,10 +3,12 @@ package resume.builder.core.mvc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import resume.builder.api.entity.AccountBean;
 import resume.builder.api.service.AccountService;
 import resume.builder.core.mvc.form.SignUpForm;
@@ -41,11 +43,11 @@ class AuthController {
     }
 
     @RequestMapping("sign-up")
-    ResponseEntity<Map<String, String>> signUp(@Valid @RequestBody SignUpForm signUpForm, BindingResult bindingResult) throws IOException, URISyntaxException
+    Map<String, String> signUp(@Valid @RequestBody SignUpForm signUpForm, BindingResult bindingResult) throws IOException, URISyntaxException
     {
         if(bindingResult.hasErrors()){
             final String error = bindingResult.getAllErrors().get(0).getCode();
-            return ResponseEntity.badRequest().body(Collections.singletonMap("error", error));
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, error);
         }
 
         final Optional<String> accessToken = authHelper.getAdminAccessToken();
@@ -55,36 +57,34 @@ class AuthController {
                 final Optional<String> authUserId = authHelper.getAuthUserIdByAccessTokenAndUsername(accessToken.get(), signUpForm.username);
                 if(authUserId.isPresent()){
                     final AccountBean account = accountService.addAccount(signUpForm.username, authUserId.get());
-                    return ResponseEntity.ok(Collections.singletonMap("username", account.getUsername()));
+                    return Collections.singletonMap("username", account.getUsername());
                 }
             }
         }
 
-        return ResponseEntity.badRequest().build();
+        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping("login")
-    ResponseEntity<Map<String, String>> login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) throws IOException
+    Map<String, String> login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) throws IOException
     {
         final Map<String, String> token = authHelper.getTokenByUsernameAndPassword(username, password);
         if(token.isEmpty()){
-            return ResponseEntity.badRequest().body(Collections.singletonMap("error", "invalid.credentials"));
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid.credentials");
         }
-        else{
-            return ResponseEntity.ok(token);
-        }
+
+        return token;
     }
 
     @RequestMapping("refresh-access-token")
-    ResponseEntity<Map<String, String>> refreshAccessToken(@RequestParam(value = "refreshToken") String refreshToken, Principal principal) throws IOException
+    Map<String, String> refreshAccessToken(@RequestParam(value = "refreshToken") String refreshToken, Principal principal) throws IOException
     {
         final Map<String, String> token = authHelper.getRefreshedToken(refreshToken);
         if(token.isEmpty()){
-            return ResponseEntity.badRequest().build();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        else{
-            return ResponseEntity.ok(token);
-        }
+
+        return token;
     }
 
     @RequestMapping("logout")
