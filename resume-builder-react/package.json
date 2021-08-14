@@ -18,6 +18,7 @@
     "axios": "^0.21.1",
     "bootstrap": "4.6.0",
     "date-fns": "^2.23.0",
+    "dotenv": "^10.0.0",
     "formik": "^2.2.9",
     "formik-material-ui": "^3.0.1",
     "formik-material-ui-lab": "0.0.8",
@@ -43,10 +44,11 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-csp dev && react-scripts start",
+    "build": "react-csp prod && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve:dev": "react-csp dev && react-scripts build && set PORT=30001 && serve -s build"
   },
   "eslintConfig": {
     "extends": [
@@ -70,6 +72,7 @@
     ]
   },
   "devDependencies": {
+    "react-csp": "^1.1.1",
     "redux-devtools-extension": "^2.13.9"
   }
 }
