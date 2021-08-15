@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;
 import resume.builder.core.mvc.form.ResumeAboutMeForm;
+import resume.builder.util.CountryUtil;
 import resume.builder.util.DateUtil;
 
 import java.util.Date;
@@ -20,7 +21,7 @@ import java.util.Optional;
 public class ResumeAboutMeFormValidator implements Validator {
     private static final Logger logger = LoggerFactory.getLogger(ResumeAboutMeFormValidator.class);
 
-    @Value("${resume.profile.picture.max.upload.size:1}")
+    @Value("${resume.profile.picture.max.upload.size:2}")
     private long maxUploadSize;
 
     @Value("${resume.career.objective.max.length:300}")
@@ -55,6 +56,10 @@ public class ResumeAboutMeFormValidator implements Validator {
 
             if(!DateUtil.isDate1AfterDate2(DateUtil.setZeroTime(now), form.getDateOfBirth())){
                 errors.reject("invalid.birth.date");
+            }
+
+            if(!CountryUtil.isValidCountryName(form.getNationality())){
+                errors.reject("invalid.nationality");
             }
 
             if(Optional.ofNullable(form.getCareerObjective()).isPresent() && form.getCareerObjective().length() > maxCareerObjectiveLength){

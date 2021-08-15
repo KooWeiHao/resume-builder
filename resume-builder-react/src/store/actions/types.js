@@ -15,3 +15,6 @@ export const SET_LOADING_BAR_PROGRESS = 'SET_LOADING_BAR_PROGRESS';
 
 //Resume
 export const ADD_OR_UPDATE_RESUME = "ADD_OR_UPDATE_RESUME";
+
+//Country
+export const FIND_COUNTRY_ALL = "FIND_COUNTRY_ALL";

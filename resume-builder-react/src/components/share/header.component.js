@@ -21,7 +21,7 @@ function HeaderComponent(props){
     });
 
     const changeLanguage = async()=>{
-        const language = ['en', 'cn'].filter(l =>{
+        const language = ['en', 'zh'].filter(l =>{
             return l !== i18n.language;
         })[0];
         await i18n.changeLanguage(language);

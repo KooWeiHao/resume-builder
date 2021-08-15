@@ -9,6 +9,9 @@ import {connect} from "react-redux";
 import {addOrUpdateResumeAboutMe} from "../../../store/actions/resume.action";
 import moment from "moment";
 import {endOfYesterday} from "date-fns";
+import {findCountryAll} from "../../../store/actions/country.action";
+import i18n from "../../../configs/i18n";
+import classNames from "classnames";
 
 class AboutMe extends Component{
     constructor(props) {
@@ -31,10 +34,30 @@ class AboutMe extends Component{
                 ui:{
                     successful: false,
                     profilePictureError: null
+                },
+                option:{
+                  country: props.country
                 }
             },
             isSaveModalOpened: false
         }
+    }
+
+    componentDidMount(){
+        this.setCountryFormState();
+        i18n.on("languageChanged", ()=>{
+            this.setCountryFormState();
+        });
+    }
+
+    componentWillUnmount() {
+        i18n.off("languageChanged");
+    }
+
+    setCountryFormState(){
+        this.props.findCountryAll(i18n.language).then(() =>{
+            this.setFormState("option", {"country": this.props.country});
+        });
     }
 
     validationSchema = Yup.object().shape({
@@ -184,7 +207,7 @@ class AboutMe extends Component{
                                     <div className="row">
                                         <div className="col-6 form-group required">
                                             <label className="form-control-label" htmlFor="name">{t("resume.page.modify.form.name.title")}</label>
-                                            <Field type="text" className={`form-control ${touched.name && errors.name ? "is-invalid" : ""}`} id="name" name="name" placeholder={t("resume.page.modify.form.name.placeholder")} />
+                                            <Field type="text" className={classNames("form-control", {"is-invalid": touched.name && errors.name})} id="name" name="name" placeholder={t("resume.page.modify.form.name.placeholder")} />
                                             <ErrorMessage component="div" name="name" className="invalid-feedback font-italic"/>
                                         </div>
                                         <div className="col-6 form-group">
@@ -195,24 +218,29 @@ class AboutMe extends Component{
                                     <div className="row">
                                         <div className="col-6 form-group required">
                                             <label className="form-control-label" htmlFor="email">{t("resume.page.modify.form.email.title")}</label>
-                                            <Field type="email" className={`form-control ${touched.email && errors.email ? "is-invalid" : ""}`} id="email" name="email" placeholder={t("resume.page.modify.form.email.placeholder")} />
+                                            <Field type="email" className={classNames("form-control", {"is-invalid": touched.email && errors.email})} id="email" name="email" placeholder={t("resume.page.modify.form.email.placeholder")} />
                                             <ErrorMessage component="div" name="email" className="invalid-feedback font-italic"/>
                                         </div>
                                         <div className="col-6 form-group required">
                                             <label className="form-control-label" htmlFor="mobileNumber">{t("resume.page.modify.form.mobile.number.title")}</label>
-                                            <Field type="number" className={`form-control ${touched.mobileNumber && errors.mobileNumber ? "is-invalid" : ""}`} id="mobileNumber" name="mobileNumber" placeholder={t("resume.page.modify.form.mobile.number.placeholder")} />
+                                            <Field type="number" className={classNames("form-control", {"is-invalid": touched.mobileNumber && errors.mobileNumber})} id="mobileNumber" name="mobileNumber" placeholder={t("resume.page.modify.form.mobile.number.placeholder")} />
                                             <ErrorMessage component="div" name="mobileNumber" className="invalid-feedback font-italic"/>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-6 form-group required">
                                             <label className="form-control-label" htmlFor="dateOfBirth">{t("resume.page.modify.form.date.of.birth.title")}</label>
-                                            <Field type="date" className={`form-control ${touched.dateOfBirth && errors.dateOfBirth ? "is-invalid" : ""}`} id="dateOfBirth" name="dateOfBirth" placeholder={t("resume.page.modify.form.date.of.birth.placeholder")} max={moment(endOfYesterday()).format("YYYY-MM-DD")}/>
+                                            <Field type="date" className={classNames("form-control", {"is-invalid": touched.dateOfBirth && errors.dateOfBirth})} id="dateOfBirth" name="dateOfBirth" placeholder={t("resume.page.modify.form.date.of.birth.placeholder")} max={moment(endOfYesterday()).format("YYYY-MM-DD")}/>
                                             <ErrorMessage component="div" name="dateOfBirth" className="invalid-feedback font-italic"/>
                                         </div>
                                         <div className="col-6 form-group required">
                                             <label className="form-control-label" htmlFor="nationality">{t("resume.page.modify.form.nationality.title")}</label>
-                                            <Field type="text" className={`form-control ${touched.nationality && errors.nationality ? "is-invalid" : ""}`} id="nationality" name="nationality" placeholder={t("resume.page.modify.form.nationality.placeholder")} />
+                                            <Field as="select" className={classNames("form-control", {"is-invalid": touched.nationality && errors.nationality, "mid-grey-text": !values.nationality})} id="nationality" name="nationality">
+                                                <option value="" disabled hidden>{t("resume.page.modify.form.nationality.placeholder")}</option>
+                                                {form.option.country.map(country =>
+                                                    <option value={country} key={country}>{country}</option>
+                                                )}
+                                            </Field>
                                             <ErrorMessage component="div" name="nationality" className="invalid-feedback font-italic"/>
                                         </div>
                                     </div>
@@ -250,13 +278,20 @@ class AboutMe extends Component{
 }
 
 function mapStateToProps(state){
-    return {};
+    const country = state.countryReducer;
+    return {
+        country
+    };
 }
 
 function mapDispatchToProps(dispatch){
     return {
         addOrUpdateResumeAboutMe: (profilePicture, name, title, email, mobileNumber, dateOfBirth, nationality, careerObjective) =>{
             return dispatch(addOrUpdateResumeAboutMe(profilePicture, name, title, email, mobileNumber, dateOfBirth, nationality, careerObjective));
+        },
+
+        findCountryAll: (locale) =>{
+            return dispatch(findCountryAll(locale));
         }
     }
 }

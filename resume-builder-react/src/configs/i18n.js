@@ -7,7 +7,7 @@ import loginEn from "../assets/locales/en/login.json";
 import signUpEn from "../assets/locales/en/sign-up.json";
 import resumeEn from "../assets/locales/en/resume.json";
 
-import commonCN from "../assets/locales/cn/common.json";
+import commonZH from "../assets/locales/zh/common.json";
 
 const resources = {
         en:{
@@ -18,9 +18,9 @@ const resources = {
                         ...resumeEn
                 }
         },
-        cn:{
+        zh:{
                 translation: {
-                        ...commonCN
+                        ...commonZH
                 }
         }
 };
@@ -33,7 +33,7 @@ i18next
         debug: true,
         lng: localStorage.getItem('i18nextLng') || 'en',
         fallbackLng: 'en',
-        supportedLngs: ['en', 'cn'],
+        supportedLngs: ['en', 'zh'],
         load: 'languageOnly'
     });
 

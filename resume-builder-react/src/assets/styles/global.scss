@@ -25,3 +25,11 @@
 .pointer-events-none{
   pointer-events: none;
 }
+
+.was-validated select.form-control:invalid, select.form-control.is-invalid{
+  background-position: right calc(0.375em + 0.7075rem) center;
+}
+
+.was-validated select.form-control:valid, select.form-control.is-valid{
+  background-position: right calc(0.375em + 0.7075rem) center;
+}

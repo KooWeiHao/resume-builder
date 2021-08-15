@@ -6,6 +6,7 @@ $amaranth: #dc3545;
 
 $aluminium: #8A8D91;
 $bright-grey: #585A5D;
+$mid-grey: #636C72;
 
 $white: #ffffff;
 $gainsboro: #DEDEDE;
@@ -33,6 +34,10 @@ $aliceblue: #f8f9fa;
 
 .aluminium-link:hover{
   color: $bright-grey;
+}
+
+.mid-grey-text{
+  color: $mid-grey;
 }
 
 

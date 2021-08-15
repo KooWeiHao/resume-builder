@@ -9,6 +9,7 @@ import {signUp} from "../../store/actions/auth.action";
 import {clearMessage} from "../../store/actions/message.action";
 import {ReactComponent as SuccessImage} from "../../assets/images/success.svg";
 import {Helmet} from "react-helmet";
+import classNames from "classnames";
 
 class SignUpComponent extends Component{
     constructor(props) {
@@ -88,14 +89,14 @@ class SignUpComponent extends Component{
                                                     <div className="row form-group required">
                                                         <div className="col-12">
                                                             <label className="form-control-label" htmlFor="username"><FontAwesomeIcon icon="user" /> {t("sign.up.form.username.title")}</label>
-                                                            <Field type="text" className={`form-control ${touched.username && errors.username ? "is-invalid" : ""}`} id="username" name="username" placeholder={t("sign.up.form.username.placeholder")} onChange={e => this.onChange(e, handleChange)}/>
+                                                            <Field type="text" className={classNames("form-control", {"is-invalid": touched.username && errors.username})} id="username" name="username" placeholder={t("sign.up.form.username.placeholder")} onChange={e => this.onChange(e, handleChange)}/>
                                                             <ErrorMessage component="div" name="username" className="invalid-feedback font-italic"/>
                                                         </div>
                                                     </div>
                                                     <div className="row form-group required">
                                                         <div className="col-12">
                                                             <label className="form-control-label" htmlFor="password"><FontAwesomeIcon icon="lock" /> {t("sign.up.form.password.title")}</label>
-                                                            <Field type="password" className={`form-control ${touched.password && errors.password ? "is-invalid" : ""}`} id="password" name="password" placeholder={t("sign.up.form.password.placeholder")} onChange={e => this.onChange(e, handleChange)}/>
+                                                            <Field type="password" className={classNames("form-control", {"is-invalid": touched.password && errors.password})} id="password" name="password" placeholder={t("sign.up.form.password.placeholder")} onChange={e => this.onChange(e, handleChange)}/>
                                                             <ErrorMessage component="div" name="password" className="invalid-feedback font-italic"/>
                                                         </div>
                                                     </div>
