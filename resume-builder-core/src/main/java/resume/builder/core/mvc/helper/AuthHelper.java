@@ -2,6 +2,7 @@ package resume.builder.core.mvc.helper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.apache.http.HttpEntity;
@@ -23,8 +24,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -59,7 +58,8 @@ public class AuthHelper {
     @Value("${resume.builder.auth.logout.api}")
     private String authLogoutApi;
 
-    private CloseableHttpResponse sendGetRequest(String URI, String token) throws IOException
+    @SneakyThrows
+    private CloseableHttpResponse sendGetRequest(String URI, String token)
     {
         HttpGet request = new HttpGet(URI);
         Optional.ofNullable(token).ifPresent(t ->
@@ -69,7 +69,8 @@ public class AuthHelper {
         return HttpClientBuilder.create().build().execute(request);
     }
 
-    private CloseableHttpResponse sendPostRequest(String URI, HttpEntity entity, String contentType, String token) throws IOException
+    @SneakyThrows
+    private CloseableHttpResponse sendPostRequest(String URI, HttpEntity entity, String contentType, String token)
     {
         HttpPost request = new HttpPost(URI);
         request.setEntity(entity);
@@ -81,12 +82,13 @@ public class AuthHelper {
         return HttpClientBuilder.create().build().execute(request);
     }
 
-    private CloseableHttpResponse sendPostRequest(String URI, HttpEntity entity, String contentType) throws IOException
+    private CloseableHttpResponse sendPostRequest(String URI, HttpEntity entity, String contentType)
     {
         return this.sendPostRequest(URI, entity, contentType, null);
     }
 
-    public final Optional<String> getAdminAccessToken() throws IOException
+    @SneakyThrows
+    public final Optional<String> getAdminAccessToken()
     {
         logger.info("Getting admin access token from auth server");
 
@@ -113,7 +115,8 @@ public class AuthHelper {
         return accessToken;
     }
 
-    public final Boolean createNewUserByAccessTokenAndUsernameAndPassword(String accessToken, String username, String password) throws IOException
+    @SneakyThrows
+    public final Boolean createNewUserByAccessTokenAndUsernameAndPassword(String accessToken, String username, String password)
     {
         logger.info("Creating new user at auth server");
 
@@ -140,7 +143,8 @@ public class AuthHelper {
         }
     }
 
-    public final Optional<String> getAuthUserIdByAccessTokenAndUsername(String accessToken, String username) throws IOException, URISyntaxException
+    @SneakyThrows
+    public final Optional<String> getAuthUserIdByAccessTokenAndUsername(String accessToken, String username)
     {
         logger.info("Getting user id from auth server");
 
@@ -165,7 +169,7 @@ public class AuthHelper {
         return authUserId;
     }
 
-    public final Map<String, String> getTokenByUsernameAndPassword(String username, String password) throws IOException
+    public final Map<String, String> getTokenByUsernameAndPassword(String username, String password)
     {
         logger.info("{} - Getting token from auth server", username);
 
@@ -180,7 +184,7 @@ public class AuthHelper {
         return getUserToken(params);
     }
 
-    public final Map<String, String> getRefreshedToken(String refreshToken) throws IOException
+    public final Map<String, String> getRefreshedToken(String refreshToken)
     {
         logger.info("Getting refreshed token from auth server");
 
@@ -193,7 +197,8 @@ public class AuthHelper {
         return getUserToken(params);
     }
 
-    private Map<String, String> getUserToken(List<BasicNameValuePair> params) throws IOException
+    @SneakyThrows
+    private Map<String, String> getUserToken(List<BasicNameValuePair> params)
     {
         CloseableHttpResponse response = sendPostRequest(tokenApi, new UrlEncodedFormEntity(params, StandardCharsets.UTF_8), MediaType.APPLICATION_FORM_URLENCODED_VALUE);
 
@@ -213,7 +218,8 @@ public class AuthHelper {
         return token;
     }
 
-    public final void logoutByRefreshToken(String refreshToken) throws IOException
+    @SneakyThrows
+    public final void logoutByRefreshToken(String refreshToken)
     {
         logger.info("{} - logout", SecurityContextHolder.getContext().getAuthentication().getName());
 

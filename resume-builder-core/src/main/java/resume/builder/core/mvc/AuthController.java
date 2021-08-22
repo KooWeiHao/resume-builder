@@ -15,9 +15,6 @@ import resume.builder.core.mvc.form.validator.SignUpFormValidator;
 import resume.builder.core.mvc.helper.AuthHelper;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.security.Principal;
 import java.util.*;
 
 @RestController
@@ -42,7 +39,7 @@ class AuthController {
     }
 
     @RequestMapping("sign-up")
-    Map<String, String> signUp(@Valid @RequestBody SignUpForm signUpForm, BindingResult bindingResult) throws IOException, URISyntaxException
+    Map<String, String> signUp(@Valid @RequestBody SignUpForm signUpForm, BindingResult bindingResult)
     {
         if(bindingResult.hasErrors()){
             final String error = bindingResult.getAllErrors().get(0).getCode();
@@ -65,7 +62,7 @@ class AuthController {
     }
 
     @RequestMapping("login")
-    Map<String, String> login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) throws IOException
+    Map<String, String> login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password)
     {
         final Map<String, String> token = authHelper.getTokenByUsernameAndPassword(username, password);
         if(token.isEmpty()){
@@ -76,7 +73,7 @@ class AuthController {
     }
 
     @RequestMapping("refresh-access-token")
-    Map<String, String> refreshAccessToken(@RequestParam(value = "refreshToken") String refreshToken, Principal principal) throws IOException
+    Map<String, String> refreshAccessToken(@RequestParam(value = "refreshToken") String refreshToken)
     {
         final Map<String, String> token = authHelper.getRefreshedToken(refreshToken);
         if(token.isEmpty()){
@@ -87,7 +84,7 @@ class AuthController {
     }
 
     @RequestMapping("logout")
-    void logout(@RequestParam(value = "refreshToken") String refreshToken) throws IOException
+    void logout(@RequestParam(value = "refreshToken") String refreshToken)
     {
         authHelper.logoutByRefreshToken(refreshToken);
     }

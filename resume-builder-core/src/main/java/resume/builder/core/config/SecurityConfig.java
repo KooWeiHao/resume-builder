@@ -1,5 +1,6 @@
 package resume.builder.core.config;
 
+import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,8 +26,9 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${resume.builder.react.origin}")
     private List<String> allowedOrigin;
 
+    @SneakyThrows
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) {
         http.cors()
                 .and()
                 .csrf().disable()
