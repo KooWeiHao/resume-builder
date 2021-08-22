@@ -5,20 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
-import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import java.time.format.DateTimeFormatter;
 
 @Configuration
-class DateTimeConfig extends WebMvcConfigurationSupport {
-
+class DateTimeConfig {
     @Bean
-    @Override
-    public FormattingConversionService mvcConversionService() {
-        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService(false);
-
+    public FormattingConversionService configure(final FormattingConversionService conversionService) {
         DateTimeFormatterRegistrar dateTimeFormatterRegistrar = new DateTimeFormatterRegistrar();
         dateTimeFormatterRegistrar.setDateFormatter(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         dateTimeFormatterRegistrar.setDateTimeFormatter(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

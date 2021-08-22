@@ -26,6 +26,7 @@
 		<httpcomponents.version>4.5.13</httpcomponents.version>
 		<commons.fileupload.version>1.4</commons.fileupload.version>
 		<commons.validator.version>1.7</commons.validator.version>
+		<springfox.boot.starter.version>3.0.0</springfox.boot.starter.version>
 	</properties>
 
 	<dependencies>
@@ -158,6 +159,13 @@
 			<groupId>commons-validator</groupId>
 			<artifactId>commons-validator</artifactId>
 			<version>${commons.validator.version}</version>
+		</dependency>
+
+		<!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>${springfox.boot.starter.version}</version>
 		</dependency>
 
 		<!-- other dependencies -->
