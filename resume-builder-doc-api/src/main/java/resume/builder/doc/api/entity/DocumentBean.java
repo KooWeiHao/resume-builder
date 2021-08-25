@@ -1,4 +1,4 @@
-package resume.builder.api.entity;
+package resume.builder.doc.api.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

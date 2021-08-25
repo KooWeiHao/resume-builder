@@ -1,4 +1,4 @@
-package resume.builder.core.service.impl;
+package resume.builder.doc.core.service.impl;
 
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import resume.builder.api.entity.DocumentBean;
-import resume.builder.api.service.DocumentService;
-import resume.builder.api.service.SmartSequenceService;
-import resume.builder.core.dao.DocumentDao;
+import resume.builder.doc.api.entity.DocumentBean;
+import resume.builder.doc.api.service.DocumentService;
+import resume.builder.doc.api.service.SmartSequenceService;
+import resume.builder.doc.core.dao.DocumentDao;
 import resume.builder.util.DateUtil;
 
 import java.util.Date;

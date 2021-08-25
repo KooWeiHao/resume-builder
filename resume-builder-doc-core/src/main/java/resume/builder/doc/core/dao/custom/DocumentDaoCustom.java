@@ -1,6 +1,6 @@
-package resume.builder.core.dao.custom;
+package resume.builder.doc.core.dao.custom;
 
-import resume.builder.api.entity.DocumentBean;
+import resume.builder.doc.api.entity.DocumentBean;
 
 import java.util.Optional;
 

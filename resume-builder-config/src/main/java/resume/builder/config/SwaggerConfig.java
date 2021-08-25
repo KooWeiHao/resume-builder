@@ -19,6 +19,11 @@ import java.util.List;
 
 @Configuration
 class SwaggerConfig {
+    /*
+    Page - /swagger-ui/
+    Docs - /v2/api-docs?{groupName}
+    */
+
     @Value("${controller.base.package:}")
     private String controllerBasePackage;
 

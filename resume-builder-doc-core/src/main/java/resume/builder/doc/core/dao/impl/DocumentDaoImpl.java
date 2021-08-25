@@ -1,12 +1,12 @@
-package resume.builder.core.dao.impl;
+package resume.builder.doc.core.dao.impl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-import resume.builder.api.entity.DocumentBean;
-import resume.builder.api.entity.QDocumentBean;
-import resume.builder.core.dao.custom.DocumentDaoCustom;
+import resume.builder.doc.api.entity.DocumentBean;
+import resume.builder.doc.api.entity.QDocumentBean;
+import resume.builder.doc.core.dao.custom.DocumentDaoCustom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

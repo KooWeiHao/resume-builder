@@ -8,13 +8,13 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>resume-builder-rest</artifactId>
-	<name>Resume Builder (Rest)</name>
+	<artifactId>resume-builder-doc-rest</artifactId>
+	<name>Resume Builder DOC (Rest)</name>
 
 	<dependencies>
 		<dependency>
 			<groupId>resume.builder</groupId>
-			<artifactId>resume-builder-core</artifactId>
+			<artifactId>resume-builder-doc-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

@@ -183,24 +183,6 @@
 
 	<build>
 		<plugins>
-<!--			<plugin>-->
-<!--				<groupId>org.codehaus.mojo</groupId>-->
-<!--				<artifactId>build-helper-maven-plugin</artifactId>-->
-<!--				<version>3.0.0</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<phase>generate-sources</phase>-->
-<!--						<goals>-->
-<!--							<goal>add-source</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<sources>-->
-<!--								<source>target/generated-sources/java</source>-->
-<!--							</sources>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
 			<plugin>
 				<groupId>com.mysema.maven</groupId>
 				<artifactId>apt-maven-plugin</artifactId>
@@ -221,13 +203,21 @@
 	</build>
 
 	<modules>
-		<module>resume-builder-api</module>
 		<module>resume-builder-auth</module>
-		<module>resume-builder-core</module>
+
 		<module>resume-builder-react</module>
-		<module>resume-builder-rest</module>
+
 		<module>resume-builder-util</module>
+
 		<module>resume-builder-config</module>
+
+		<module>resume-builder-api</module>
+		<module>resume-builder-core</module>
+		<module>resume-builder-rest</module>
+
+		<module>resume-builder-doc-api</module>
+		<module>resume-builder-doc-core</module>
+		<module>resume-builder-doc-rest</module>
 	</modules>
 
 </project>

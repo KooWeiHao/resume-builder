@@ -1,7 +1,7 @@
-package resume.builder.api.service;
+package resume.builder.doc.api.service;
 
 import org.springframework.web.multipart.MultipartFile;
-import resume.builder.api.entity.DocumentBean;
+import resume.builder.doc.api.entity.DocumentBean;
 
 import java.util.Optional;
 
