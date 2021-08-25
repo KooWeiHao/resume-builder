@@ -6,9 +6,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import resume.builder.api.entity.AccountBean;
+import resume.builder.config.Config;
 import resume.builder.core.dao.AccountDao;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackageClasses = {ResumeBuilder.class, Config.class})
 @EntityScan(basePackageClasses = {AccountBean.class})
 @EnableJpaRepositories(basePackageClasses = {AccountDao.class})
 public class ResumeBuilderApplication extends SpringBootServletInitializer {

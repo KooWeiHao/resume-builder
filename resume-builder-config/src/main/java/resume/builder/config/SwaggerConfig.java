@@ -1,5 +1,6 @@
-package resume.builder.core.config;
+package resume.builder.config;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,47 +18,51 @@ import java.util.Collections;
 import java.util.List;
 
 @Configuration
-class SwaggerConfig{
-    @Value("${controller.base.package:resume.builder.core.mvc}")
+class SwaggerConfig {
+    @Value("${controller.base.package:}")
     private String controllerBasePackage;
 
-    @Value("${swagger.ui.docket.group.name:Resume Builder}")
+    @Value("${swagger.ui.docket.group.name:}")
     private String swaggerUiDocketGroupName;
 
-    @Value("${swagger.ui.api.info.title:Resume Builder APIs}")
+    @Value("${swagger.ui.api.info.title:}")
     private String swaggerUiApiInfoTitle;
 
-    @Value("${swagger.ui.api.info.description:Testing out Swagger UI}")
+    @Value("${swagger.ui.api.info.description:}")
     private String swaggerUiApiInfoDescription;
 
-    @Value("${swagger.ui.api.info.version:resume.v1.0}")
+    @Value("${swagger.ui.api.info.version:}")
     private String swaggerUiApiInfoVersion;
 
-    @Value("${swagger.ui.api.info.license:v1.0}")
+    @Value("${swagger.ui.api.info.license:}")
     private String swaggerUiApiInfoLicense;
 
-    @Value("${swagger.ui.api.info.contact.name:Eric Koo}")
+    @Value("${swagger.ui.api.info.contact.name:}")
     private String swaggerUiApiInfoContactName;
 
-    @Value("${swagger.ui.api.info.contact.url:https://github.com/KooWeiHao}")
+    @Value("${swagger.ui.api.info.contact.url:}")
     private String swaggerUiApiInfoContactUrl;
 
-    @Value("${swagger.ui.api.info.email:ericcool.1129@gmail.com}")
+    @Value("${swagger.ui.api.info.email:}")
     private String swaggerUiApiInfoContactEmail;
 
-    @Value("${swagger.ui.api.key.name:Bearer [access_token]}")
+    @Value("${swagger.ui.api.key.name:}")
     private String swaggerUiApiKeyName;
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName(swaggerUiDocketGroupName)
-                .apiInfo(apiInfo())
+        final Docket docket = new Docket(DocumentationType.SWAGGER_2);
+
+        if(StringUtils.isNotBlank(swaggerUiDocketGroupName)){
+            docket.groupName(swaggerUiDocketGroupName);
+        }
+
+        return docket.apiInfo(apiInfo())
                 .ignoredParameterTypes(InputStream.class, Resource.class)
                 .securityContexts(Collections.singletonList(securityContext()))
                 .securitySchemes(Collections.singletonList(apiKey()))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage(controllerBasePackage))
+                .apis(StringUtils.isNotBlank(controllerBasePackage) ? RequestHandlerSelectors.basePackage(controllerBasePackage) : RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
     }

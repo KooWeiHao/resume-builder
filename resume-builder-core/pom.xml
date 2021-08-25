@@ -18,11 +18,10 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!-- resource server dependencies -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-			<version>${spring.boot.version}</version>
+			<groupId>resume.builder</groupId>
+			<artifactId>resume-builder-config</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -227,6 +227,7 @@
 		<module>resume-builder-react</module>
 		<module>resume-builder-rest</module>
 		<module>resume-builder-util</module>
+		<module>resume-builder-config</module>
 	</modules>
 
 </project>

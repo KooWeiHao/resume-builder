@@ -1,4 +1,4 @@
-package resume.builder.core.config;
+package resume.builder.config;
 
 import lombok.SneakyThrows;
 import org.slf4j.Logger;

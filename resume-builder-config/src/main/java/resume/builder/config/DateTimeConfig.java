@@ -1,4 +1,4 @@
-package resume.builder.core.config;
+package resume.builder.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

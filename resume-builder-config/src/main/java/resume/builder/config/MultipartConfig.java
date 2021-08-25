@@ -1,4 +1,4 @@
-package resume.builder.core.config;
+package resume.builder.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +7,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 class MultipartConfig {
-    @Value("${spring.multipart.file.max.upload.size.in.mb}")
+    @Value("${spring.multipart.file.max.upload.size.in.mb:10}")
     private long maxUploadSize;
 
     @Bean(name = "multipartResolver")

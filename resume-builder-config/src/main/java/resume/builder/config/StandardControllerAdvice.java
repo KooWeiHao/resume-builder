@@ -1,4 +1,4 @@
-package resume.builder.core.mvc.helper;
+package resume.builder.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 @ControllerAdvice
-class AbstractControllerAdvice {
-    private static final Logger logger = LoggerFactory.getLogger(AbstractControllerAdvice.class);
+class StandardControllerAdvice {
+    private static final Logger logger = LoggerFactory.getLogger(StandardControllerAdvice.class);
 
     @InitBinder
     private void initBinder(WebDataBinder binder){
