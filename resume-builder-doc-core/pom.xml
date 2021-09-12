@@ -23,5 +23,11 @@
 			<artifactId>resume-builder-config</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>resume.builder</groupId>
+			<artifactId>resume-builder-amqp-producer</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

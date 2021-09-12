@@ -8,17 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>resume-builder-doc-api</artifactId>
-    <name>Resume Builder DOC (Api)</name>
+    <artifactId>resume-builder-amqp-consumer</artifactId>
+    <name>Resume Builder AMQP (Consumer)</name>
 
     <dependencies>
-        <dependency>
-            <groupId>resume.builder</groupId>
-            <artifactId>resume-builder-util</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
         <dependency>
             <groupId>resume.builder</groupId>
             <artifactId>resume-builder-amqp-api</artifactId>

@@ -168,6 +168,18 @@
 			<version>${springfox.boot.starter.version}</version>
 		</dependency>
 
+		<!-- RabbitMQ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<!-- other dependencies -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -218,6 +230,10 @@
 		<module>resume-builder-doc-api</module>
 		<module>resume-builder-doc-core</module>
 		<module>resume-builder-doc-rest</module>
+
+		<module>resume-builder-amqp-api</module>
+		<module>resume-builder-amqp-consumer</module>
+		<module>resume-builder-amqp-producer</module>
 	</modules>
 
 </project>

@@ -52,8 +52,14 @@ class DocumentServiceImpl implements DocumentService {
         return document;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<DocumentBean> getDocumentByDocumentId(String documentId) {
-        return documentDao.getByDocumentId(documentId);
+        return documentDao.findById(documentId);
+    }
+
+    @Override
+    public DocumentBean getNullableDocumentByDocumentId(String documentId) {
+        return getDocumentByDocumentId(documentId).orElse(null);
     }
 }
