@@ -1,4 +1,4 @@
-package resume.builder.core;
+package resume.builder;
 
 public class ResumeBuilder {
 }

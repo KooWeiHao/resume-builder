@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import resume.builder.config.Config;
+import resume.builder.ResumeBuilder;
 import resume.builder.doc.api.entity.DocumentBean;
 import resume.builder.doc.core.dao.DocumentDao;
 
-@SpringBootApplication(scanBasePackageClasses = {Document.class, Config.class})
+@SpringBootApplication(scanBasePackageClasses = {ResumeBuilder.class})
 @EntityScan(basePackageClasses = {DocumentBean.class})
 @EnableJpaRepositories(basePackageClasses = {DocumentDao.class})
 public class ResumeBuilderDocumentApplication extends SpringBootServletInitializer {
