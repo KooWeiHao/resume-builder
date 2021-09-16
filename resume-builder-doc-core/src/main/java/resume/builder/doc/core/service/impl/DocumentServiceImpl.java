@@ -13,10 +13,10 @@ import resume.builder.doc.api.service.DocumentService;
 import resume.builder.doc.api.service.SmartSequenceService;
 import resume.builder.doc.core.dao.DocumentDao;
 import resume.builder.util.DateUtil;
+import resume.builder.util.SerializableOptional;
 
 import java.util.Date;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 class DocumentServiceImpl implements DocumentService {
@@ -54,12 +54,7 @@ class DocumentServiceImpl implements DocumentService {
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<DocumentBean> getDocumentByDocumentId(String documentId) {
-        return documentDao.findById(documentId);
-    }
-
-    @Override
-    public DocumentBean getNullableDocumentByDocumentId(String documentId) {
-        return getDocumentByDocumentId(documentId).orElse(null);
+    public SerializableOptional<DocumentBean> getDocumentByDocumentId(String documentId) {
+        return SerializableOptional.fromOptional(documentDao.findById(documentId));
     }
 }

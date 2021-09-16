@@ -8,15 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import resume.builder.amqp.api.AmqpSystemCode;
-import resume.builder.amqp.consumer.AmqpConsumerCreator;
 import resume.builder.api.entity.AccountBean;
 import resume.builder.api.service.AccountService;
 import resume.builder.core.mvc.form.SignUpForm;
 import resume.builder.core.mvc.form.validator.SignUpFormValidator;
 import resume.builder.core.mvc.helper.AuthHelper;
-import resume.builder.doc.api.entity.DocumentBean;
-import resume.builder.doc.api.service.DocumentService;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -29,14 +25,12 @@ class AuthController {
     private final AccountService accountService;
     private final SignUpFormValidator signUpFormValidator;
     private final AuthHelper authHelper;
-    private final AmqpConsumerCreator amqpConsumerCreator;
 
     @Autowired
-    AuthController(AccountService accountService, SignUpFormValidator signUpFormValidator, AuthHelper authHelper, AmqpConsumerCreator amqpConsumerCreator){
+    AuthController(AccountService accountService, SignUpFormValidator signUpFormValidator, AuthHelper authHelper){
         this.accountService = accountService;
         this.signUpFormValidator = signUpFormValidator;
         this.authHelper = authHelper;
-        this.amqpConsumerCreator = amqpConsumerCreator;
     }
 
     @InitBinder
@@ -93,12 +87,5 @@ class AuthController {
     void logout(@RequestParam(value = "refreshToken") String refreshToken)
     {
         authHelper.logoutByRefreshToken(refreshToken);
-    }
-
-    @GetMapping("test-amqp")
-    void testAmqp()
-    {
-        Optional<DocumentBean> doc = amqpConsumerCreator.create(AmqpSystemCode.RESUME_BUILDER_DOC, DocumentService.class).getDocumentByDocumentId("6b93c665-d968-4d38-8015-c7bfa693ac9e");
-        System.out.println(doc.get().getName());
     }
 }

@@ -40,7 +40,7 @@ class DocumentController {
     }
 
     private ResponseEntity<byte[]> getDocumentResponse(String documentId, Boolean isPreview){
-        return documentService.getDocumentByDocumentId(documentId)
+        return documentService.getDocumentByDocumentId(documentId).asOptional()
                 .map(document -> {
                     final String returnType = isPreview ? "inline" : "attachment";
                     final String filename = UriUtils.encode(document.getName(), StandardCharsets.UTF_8);
