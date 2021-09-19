@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 import resume.builder.doc.api.entity.DocumentBean;
 import resume.builder.doc.api.service.DocumentService;
 import resume.builder.doc.api.service.SmartSequenceService;
@@ -16,7 +15,6 @@ import resume.builder.util.DateUtil;
 import resume.builder.util.SerializableOptional;
 
 import java.util.Date;
-import java.util.Objects;
 
 @Service
 class DocumentServiceImpl implements DocumentService {
@@ -34,15 +32,15 @@ class DocumentServiceImpl implements DocumentService {
     @SneakyThrows
     @Transactional
     @Override
-    public DocumentBean upload(MultipartFile file, String uploadedBy) {
+    public DocumentBean upload(String originalFilename, String contentType, byte[] bytes, long size, String uploadedBy) {
         Date now = DateUtil.instant();
 
         DocumentBean document = new DocumentBean();
         document.setCode(smartSequenceService.createCode(DocumentBean.CodePrefix.DOC.toString(), now));
-        document.setName(StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename())));
-        document.setType(file.getContentType());
-        document.setData(file.getBytes());
-        document.setSize(file.getSize());
+        document.setName(StringUtils.cleanPath(originalFilename));
+        document.setType(contentType);
+        document.setData(bytes);
+        document.setSize(size);
         document.setCreatedBy(uploadedBy);
         document.setUpdatedBy(uploadedBy);
         document.setCreatedDate(now);
