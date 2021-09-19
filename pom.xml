@@ -168,18 +168,6 @@
 			<version>${springfox.boot.starter.version}</version>
 		</dependency>
 
-		<!-- RabbitMQ -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 		<!-- other dependencies -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

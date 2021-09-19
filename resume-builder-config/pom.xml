@@ -18,5 +18,11 @@
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>resume.builder</groupId>
+            <artifactId>resume-builder-amqp-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
