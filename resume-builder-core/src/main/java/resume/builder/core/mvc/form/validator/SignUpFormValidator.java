@@ -30,12 +30,12 @@ public class SignUpFormValidator implements Validator {
         if(o instanceof SignUpForm){
             final SignUpForm form = (SignUpForm) o;
 
-            Boolean isAccountExists = accountService.existsAccountByUsername(form.username);
+            Boolean isAccountExists = accountService.existsAccountByUsername(form.getUsername());
             if(isAccountExists){
                 final String error = "duplicate.username";
                 errors.reject(error);
 
-                logger.debug("Failed: {}-{}", form.username, error);
+                logger.debug("Failed: {}-{}", form.getUsername(), error);
             }
         }
     }

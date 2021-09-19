@@ -48,11 +48,11 @@ class AuthController {
 
         final Optional<String> accessToken = authHelper.getAdminAccessToken();
         if(accessToken.isPresent()){
-            final Boolean status = authHelper.createNewUserByAccessTokenAndUsernameAndPassword(accessToken.get(), signUpForm.username, signUpForm.password);
+            final Boolean status = authHelper.createNewUserByAccessTokenAndUsernameAndPassword(accessToken.get(), signUpForm.getUsername(), signUpForm.getPassword());
             if(status){
-                final Optional<String> authUserId = authHelper.getAuthUserIdByAccessTokenAndUsername(accessToken.get(), signUpForm.username);
+                final Optional<String> authUserId = authHelper.getAuthUserIdByAccessTokenAndUsername(accessToken.get(), signUpForm.getUsername());
                 if(authUserId.isPresent()){
-                    final AccountBean account = accountService.addAccount(signUpForm.username, authUserId.get());
+                    final AccountBean account = accountService.addAccount(signUpForm.getUsername(), authUserId.get());
                     return Collections.singletonMap("username", account.getUsername());
                 }
             }
