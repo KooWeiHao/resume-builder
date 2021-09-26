@@ -11,6 +11,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import resume.builder.api.model.ResumeModifyModel;
+import resume.builder.api.model.ResumeSearchModel;
+import resume.builder.api.model.ResumeSearchResultModel;
 import resume.builder.api.service.ResumeService;
 import resume.builder.core.mvc.form.ResumeAboutMeForm;
 import resume.builder.core.mvc.form.validator.ResumeAboutMeFormValidator;
@@ -49,5 +51,11 @@ class ResumeController {
         BeanUtils.copyProperties(resumeAboutMeForm, resume);
         resume.setCreatedBy(principal.getName());
         resumeService.addOrUpdateResume(resume);
+    }
+
+    @RequestMapping(value = "find-resume")
+    ResumeSearchResultModel findResume(@Valid @RequestBody ResumeSearchModel resumeSearchModel)
+    {
+        return resumeService.findResume(resumeSearchModel);
     }
 }

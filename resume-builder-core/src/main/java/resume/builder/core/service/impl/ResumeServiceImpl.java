@@ -12,6 +12,8 @@ import resume.builder.amqp.api.AmqpSystemCode;
 import resume.builder.amqp.consumer.AmqpConsumerCreator;
 import resume.builder.api.entity.ResumeBean;
 import resume.builder.api.model.ResumeModifyModel;
+import resume.builder.api.model.ResumeSearchModel;
+import resume.builder.api.model.ResumeSearchResultModel;
 import resume.builder.api.service.ResumeService;
 import resume.builder.api.service.SmartSequenceService;
 import resume.builder.core.dao.ResumeDao;
@@ -57,5 +59,10 @@ class ResumeServiceImpl implements ResumeService {
         resumeDao.save(resume);
 
         return resume;
+    }
+
+    @Override
+    public ResumeSearchResultModel findResume(ResumeSearchModel resumeSearchModel) {
+        return resumeDao.find(resumeSearchModel);
     }
 }
