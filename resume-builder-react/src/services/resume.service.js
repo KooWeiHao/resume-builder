@@ -16,7 +16,25 @@ class ResumeService {
         params.append("nationality", nationality);
         params.append("careerObjective", careerObjective);
 
-        return http.post('resume/add-or-update-resume-about-me', params, {headers: headers});
+        return http.post('/resume/add-or-update-resume-about-me', params, {headers: headers});
+    }
+
+    findResume(pageNumber, pageSize, code, name, createdDateStart, createdDateEnd){
+        const headers ={
+            "Content-Type": "application/json"
+        };
+
+        const params = {
+            "code": code,
+            "name": name,
+            "createdDateStart": createdDateStart,
+            "createdDateEnd": createdDateEnd,
+            "pageNumber": pageNumber,
+            "pageSize": pageSize
+        };
+
+        return http.post('/resume/find-resume', params, {headers: headers});
+
     }
 }
 

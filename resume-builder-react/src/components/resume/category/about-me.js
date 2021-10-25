@@ -293,7 +293,7 @@ function mapDispatchToProps(dispatch){
         findCountryAll: (locale) =>{
             return dispatch(findCountryAll(locale));
         }
-    }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(AboutMe));
