@@ -1,3 +1,5 @@
+:warning: `INCOMPLETE PROJECT !!!`
+
 # Resume Builder
 > _Just a random project to learn [React] and [Spring Boot]_
 
